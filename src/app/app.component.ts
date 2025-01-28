@@ -13,4 +13,6 @@ import { DUMMY_USERS } from './dummy-users';
 export class AppComponent {
   title = 'task-app';
   users = DUMMY_USERS;
+
+  onSelectUser(id: string) {}
 }
