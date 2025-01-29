@@ -1,11 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, output } from '@angular/core';
 
 @Component({
   selector: 'app-new-task',
   imports: [],
   templateUrl: './new-task.component.html',
-  styleUrl: './new-task.component.css'
+  styleUrl: './new-task.component.css',
 })
 export class NewTaskComponent {
+  cancel = output<void>();
 
+  onCancel(): void {
+    this.cancel.emit();
+  }
 }
