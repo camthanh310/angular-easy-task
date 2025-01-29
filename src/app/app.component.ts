@@ -14,7 +14,7 @@ import { TasksComponent } from './tasks/tasks.component';
 export class AppComponent {
   title = 'task-app';
   users = DUMMY_USERS;
-  selectedUserId = signal('u1');
+  selectedUserId = signal<string | undefined>(undefined);
 
   selectedUser = computed(() =>
     this.users.find((user) => user.id === this.selectedUserId())
