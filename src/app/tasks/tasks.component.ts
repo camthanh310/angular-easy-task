@@ -38,6 +38,6 @@ export class TasksComponent {
   ];
 
   selectedUserTasks = computed(() =>
-    this.tasks.filter((task) => task.id === this.userId())
+    this.tasks.filter((task) => task.userId === this.userId())
   );
 }
