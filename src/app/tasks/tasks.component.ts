@@ -1,4 +1,4 @@
-import { Component, computed, input } from '@angular/core';
+import { Component, computed, input, signal } from '@angular/core';
 import { TaskComponent } from './task/task.component';
 
 @Component({
@@ -11,7 +11,7 @@ export class TasksComponent {
   userId = input.required<string>();
   name = input.required<string>();
 
-  tasks = [
+  tasks = signal([
     {
       id: 't1',
       userId: 'u1',
@@ -35,9 +35,13 @@ export class TasksComponent {
         'Prepare and describe an issue template which will help with project management',
       dueDate: '2024-06-15',
     },
-  ];
+  ]);
 
   selectedUserTasks = computed(() =>
-    this.tasks.filter((task) => task.userId === this.userId())
+    this.tasks().filter((task) => task.userId === this.userId())
   );
+
+  onCompleteTask(id: string): void {
+    this.tasks.set(this.tasks().filter((task) => task.id !== id));
+  }
 }
