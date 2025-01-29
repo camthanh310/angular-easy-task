@@ -7,5 +7,5 @@ import { Component, input } from '@angular/core';
   styleUrl: './tasks.component.css',
 })
 export class TasksComponent {
-  name = input.required<string>();
+  name = input<string>();
 }

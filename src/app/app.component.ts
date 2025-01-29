@@ -16,8 +16,8 @@ export class AppComponent {
   users = DUMMY_USERS;
   selectedUserId = signal('u1');
 
-  selectedUser = computed(
-    () => this.users.find((user) => user.id === this.selectedUserId())!
+  selectedUser = computed(() =>
+    this.users.find((user) => user.id === this.selectedUserId())
   );
 
   onSelectUser(id: string) {
