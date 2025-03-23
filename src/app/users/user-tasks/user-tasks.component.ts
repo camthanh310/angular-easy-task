@@ -62,16 +62,3 @@ export const resolveUserName: ResolveFn<string> = (
 
   return userName;
 };
-
-// export function resolveUserName(
-//   activatedRoute: ActivatedRouteSnapshot,
-//   routerState: RouterStateSnapshot
-// ): ResolveFn<string> {
-//   const usersService = inject(UsersService);
-//   const userName =
-//     usersService.users.find(
-//       (u) => u.id === activatedRoute.paramMap.get('userId')
-//     )?.name ?? '';
-
-//   return userName;
-// }
