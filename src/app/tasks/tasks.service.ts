@@ -1,4 +1,4 @@
-import { computed, Injectable, signal } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { type NewTaskData } from './task/task.model';
 
 @Injectable({
@@ -39,11 +39,7 @@ export class TasksService {
     }
   }
 
-  getUserTask(userId: string) {
-    return computed(() =>
-      this.tasks().filter((task) => task.userId === userId)
-    );
-  }
+  allTasks = this.tasks.asReadonly();
 
   addTask(taskData: NewTaskData, userId: string): void {
     const newTask = {

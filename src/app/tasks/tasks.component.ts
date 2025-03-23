@@ -1,35 +1,18 @@
-import { Component, input, signal } from '@angular/core';
+import { Component, computed, inject, input } from '@angular/core';
 import { TaskComponent } from './task/task.component';
-import { NewTaskComponent } from './new-task/new-task.component';
-import { type NewTaskData } from './task/task.model';
 import { TasksService } from './tasks.service';
 
 @Component({
   selector: 'app-tasks',
-  imports: [TaskComponent, NewTaskComponent],
+  imports: [TaskComponent],
   templateUrl: './tasks.component.html',
   styleUrl: './tasks.component.css',
 })
 export class TasksComponent {
   userId = input.required<string>();
-  name = input.required<string>();
-  isAddingTask = signal(false);
+  private readonly tasksService = inject(TasksService);
 
-  constructor(private readonly tasksService: TasksService) {}
-
-  get selectedUserTasks() {
-    return this.tasksService.getUserTask(this.userId());
-  }
-
-  onStartAddTask() {
-    this.isAddingTask.set(true);
-  }
-
-  onCancelAddTask() {
-    this.isAddingTask.set(false);
-  }
-
-  onAddTask(taskData: NewTaskData) {
-    this.isAddingTask.set(false);
-  }
+  userTasks = computed(() =>
+    this.tasksService.allTasks().filter((task) => task.userId === this.userId())
+  );
 }
