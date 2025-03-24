@@ -33,8 +33,14 @@ export class UserTasksComponent implements OnInit {
   //   () => this.usersService.users.find((u) => u.id === this.userId())?.name
   // );
   userName = input.required<string>();
+  // private readonly activatedRoute = inject(ActivatedRoute);
 
   ngOnInit(): void {
+    // this.activatedRoute.data.subscribe({
+    //   next: (data) => {
+    //     console.log(data);
+    //   },
+    // });
     //   console.log(this.message);
     //   console.log(this.activatedRoute);
     //   const subscription = this.activatedRoute.paramMap.subscribe({
